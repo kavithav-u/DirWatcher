@@ -1,0 +1,1 @@
+This is a file with MAGIC_STRING in it. Another MAGIC_STRING added to file1.
