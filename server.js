@@ -18,18 +18,8 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 const dirWatcher = new DirWatcher('./watched_directory', 'MAGIC_STRING', '*/1 * * * *');
 
 app.use('/api/config', configRoutes(dirWatcher));
-app.use('/api/task', taskRoutes(dirWatcher));
+// app.use('/api/task', taskRoutes(dirWatcher));
 app.use('/api/task/runs', taskRunsRoutes);
-
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-//     dirWatcher.startWatching();
-// });
-// Fallback to index.html for SPA (Single Page Application)
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
-// });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

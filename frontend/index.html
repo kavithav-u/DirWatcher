@@ -1,44 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DirWatcher</title>
-    <link rel="stylesheet" href="style.css">
+    <title>DirWatcher UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        table {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>DirWatcher Task Runs</h1>
-        <table id="taskRunsTable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Status</th>
-                    <th>File Count</th>
-                    <th>Magic Count</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Task run details will be populated here -->
-            </tbody>
-        </table>
+    <h1>DirWatcher Configuration</h1>
+    <form id="configForm">
+        <label for="directory">Directory:</label>
+        <input type="text" id="directory" name="directory" required>
+        <br>
+        <label for="interval">Interval:</label>
+        <input type="text" id="interval" name="interval" required>
+        <br>
+        <label for="magicString">Magic String:</label>
+        <input type="text" id="magicString" name="magicString" required>
+        <br>
+        <button type="submit">Update Configuration</button>
+    </form>
 
-        <h2>Update Configuration</h2>
-        <form id="configForm">
-            <label for="directory">Directory:</label>
-            <input type="text" id="directory" name="directory" required><br>
-            <label for="interval">Interval:</label>
-            <input type="text" id="interval" name="interval" required><br>
-            <label for="magicString">Magic String:</label>
-            <input type="text" id="magicString" name="magicString" required><br>
-            <button type="submit">Update Config</button>
-        </form>
-    </div>
+    <h2>Task Runs</h2>
+    <table id="taskRunsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Status</th>
+                <th>Magic Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Task run details will be populated here -->
+        </tbody>
+    </table>
+
     <script src="script.js"></script>
 </body>
-
 </html>

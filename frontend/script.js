@@ -4,17 +4,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch and display task runs
     fetch('/api/task/runs')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            data.taskRuns.forEach(run => {
-                const row = taskRunsTable.insertRow();
-                row.insertCell(0).innerText = run.id;
-                row.insertCell(1).innerText = new Date(run.startTime).toLocaleString();
-                row.insertCell(2).innerText = new Date(run.endTime).toLocaleString();
-                row.insertCell(3).innerText = run.status;
-                row.insertCell(4).innerText = run.fileCount;
-                row.insertCell(5).innerText = run.magicCount;
-            });
+            taskRunsTable.innerHTML = '';  // Clear the table before adding new rows
+            console.log(data,"data")
+            if (data.taskRuns) {
+                console.log(data.taskRuns,"taskruns")
+                data.taskRuns.forEach(run => {
+                    const row = taskRunsTable.insertRow();
+                    row.insertCell(0).innerText = run.id || 'N/A';
+                    row.insertCell(1).innerText = new Date(run.start_time).toLocaleString() || 'N/A';
+                    row.insertCell(2).innerText = new Date(run.end_time).toLocaleString() || 'N/A';
+                    row.insertCell(3).innerText = run.status || 'N/A';
+                    row.insertCell(4).innerText = run.magic_string_count|| 'N/A';
+                });
+            }
         })
         .catch(error => console.error('Error fetching task runs:', error));
 
@@ -36,9 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(configData)
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 alert(data.message);
             })
             .catch(error => console.error('Error updating configuration:', error));
     });
+});
