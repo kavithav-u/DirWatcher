@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DirWatcher</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>DirWatcher Task Runs</h1>
+        <table id="taskRunsTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Status</th>
+                    <th>File Count</th>
+                    <th>Magic Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Task run details will be populated here -->
+            </tbody>
+        </table>
+
+        <h2>Update Configuration</h2>
+        <form id="configForm">
+            <label for="directory">Directory:</label>
+            <input type="text" id="directory" name="directory" required><br>
+            <label for="interval">Interval:</label>
+            <input type="text" id="interval" name="interval" required><br>
+            <label for="magicString">Magic String:</label>
+            <input type="text" id="magicString" name="magicString" required><br>
+            <button type="submit">Update Config</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
