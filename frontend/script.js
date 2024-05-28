@@ -45,13 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(configData)
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
+                console.log(data,"data")
                 alert(data.message);
             })
             .catch(error => console.error('Error updating configuration:', error));
