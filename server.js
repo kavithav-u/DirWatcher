@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 const dirWatcher = new DirWatcher('./watched_directory', 'MAGIC_STRING', '*/1 * * * *');
 
 app.use('/api/config', configRoutes(dirWatcher));
-// app.use('/api/task', taskRoutes(dirWatcher));
+app.use('/api/task', taskRoutes(dirWatcher));
 app.use('/api/task/runs', taskRunsRoutes);
 
 const PORT = process.env.PORT || 3000;

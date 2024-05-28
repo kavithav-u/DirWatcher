@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(data.taskRuns,"taskruns")
                 data.taskRuns.forEach(run => {
                     const row = taskRunsTable.insertRow();
-                    row.insertCell(0).innerText = run.id || 'N/A';
+                    row.insertCell(0).innerText = run._id || 'N/A';
                     row.insertCell(1).innerText = new Date(run.start_time).toLocaleString() || 'N/A';
                     row.insertCell(2).innerText = new Date(run.end_time).toLocaleString() || 'N/A';
                     row.insertCell(3).innerText = run.status || 'N/A';
